@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<Scene stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ManagerController">
+    <AnchorPane prefHeight="657.0" prefWidth="1014.0">
+      <children>
+         <TabPane fx:id="tabPane" layoutX="14.0" layoutY="72.0" prefHeight="547.0" prefWidth="968.0" tabClosingPolicy="UNAVAILABLE">
+           <tabs>
+             <Tab text="Order Management">
+               <content>
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                           <ListView fx:id="orderList" layoutX="14.0" layoutY="14.0" onMouseClicked="#chooseOrderAction" prefHeight="230.0" prefWidth="574.0" />
+                           <TextField fx:id="tableNumberField" layoutX="601.0" layoutY="86.0" prefHeight="25.0" prefWidth="175.0" promptText="table number" />
+                           <TextField fx:id="numberOfClientsField" layoutX="601.0" layoutY="123.0" prefHeight="25.0" prefWidth="175.0" promptText="number of clients" />
+                           <DatePicker fx:id="orderDateField" layoutX="601.0" layoutY="163.0" prefHeight="25.0" prefWidth="175.0" promptText="order date" />
+                           <TextField fx:id="searchField" layoutX="602.0" layoutY="14.0" prefHeight="25.0" prefWidth="312.0" promptText="Search for order..." />
+                           <Button layoutX="863.0" layoutY="47.0" mnemonicParsing="false" onAction="#searchOrders" text="Search" />
+                           <ButtonBar layoutX="597.0" layoutY="435.0" prefHeight="69.0" prefWidth="359.0">
+                              <buttons>
+                                 <Button fx:id="saveOrder" mnemonicParsing="false" onAction="#saveOrderAction" prefHeight="51.0" prefWidth="96.0" text="Save" />
+                                 <Button fx:id="editOrder" layoutX="273.0" layoutY="19.0" mnemonicParsing="false" onAction="#editOrderAction" prefHeight="51.0" prefWidth="96.0" text="Edit">
+                                    <opaqueInsets>
+                                       <Insets />
+                                    </opaqueInsets>
+                                 </Button>
+                                 <Button fx:id="checkout" layoutX="273.0" layoutY="19.0" mnemonicParsing="false" onAction="#checkoutOrderAction" prefHeight="51.0" prefWidth="96.0" text="Checkout" />
+                              </buttons>
+                              <opaqueInsets>
+                                 <Insets />
+                              </opaqueInsets>
+                              <padding>
+                                 <Insets right="25.0" />
+                              </padding>
+                           </ButtonBar>
+                           <Label layoutX="601.0" layoutY="251.0" prefHeight="17.0" prefWidth="44.0" text="Dishes:" />
+                           <ListView fx:id="dishOrderList" layoutX="601.0" layoutY="266.0" onMouseClicked="#chooseDishOrderAction" prefHeight="159.0" prefWidth="350.0" />
+                           <Button fx:id="addDishToClient" layoutX="690.0" layoutY="219.0" mnemonicParsing="false" onAction="#addDishesToOrder" prefHeight="25.0" prefWidth="70.0" text="Add Dish" />
+                           <Button fx:id="addClientToOrder" layoutX="602.0" layoutY="219.0" mnemonicParsing="false" onAction="#addClientToOrder" prefHeight="25.0" prefWidth="73.0" text="Add Client" />
+                           <ListView fx:id="clientOrderList" layoutX="14.0" layoutY="266.0" onMouseClicked="#chooseClientOrderAction" prefHeight="232.0" prefWidth="574.0" />
+                           <Button fx:id="additionModeButton" layoutX="791.0" layoutY="186.0" mnemonicParsing="false" onAction="#additionModeToggle" prefHeight="25.0" prefWidth="158.0" text="Enable Addition Mode" />
+                           <Label layoutX="14.0" layoutY="251.0" prefHeight="17.0" prefWidth="44.0" text="Clients:" />
+                           <Button fx:id="addDishToClient1" layoutX="865.0" layoutY="219.0" mnemonicParsing="false" onAction="#deleteDishesFromOrder" prefHeight="25.0" prefWidth="84.0" text="Delete Dish" />
+                           <Button fx:id="addClientToOrder1" layoutX="771.0" layoutY="219.0" mnemonicParsing="false" onAction="#deleteClientFromOrder" prefHeight="25.0" prefWidth="87.0" text="Delete Client" />
+                        </children>
+                     </AnchorPane>
+               </content>
+             </Tab>
+             <Tab text="Client Management">
+               <content>
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                           <ListView fx:id="clientList" layoutX="14.0" layoutY="14.0" onMouseClicked="#clientListChooseAction" prefHeight="487.0" prefWidth="556.0" />
+                           <TextField fx:id="clientSearch" layoutX="588.0" layoutY="14.0" prefHeight="25.0" prefWidth="367.0" promptText="Search for client..." />
+                           <Button fx:id="clientSearchButton" layoutX="900.0" layoutY="49.0" mnemonicParsing="false" onAction="#clientSearchAction" prefHeight="25.0" prefWidth="54.0" text="Search" />
+                           <TextField fx:id="clientName" layoutX="588.0" layoutY="90.0" promptText="Name" />
+                           <TextField fx:id="clientSurname" layoutX="588.0" layoutY="132.0" promptText="Surname" />
+                           <TextField fx:id="clientEmail" layoutX="588.0" layoutY="175.0" promptText="E-mail" />
+                           <TextField fx:id="clientPhoneNumber" layoutX="588.0" layoutY="219.0" promptText="Phone number" />
+                           <TextField fx:id="clientAddress" layoutX="588.0" layoutY="265.0" promptText="Address" />
+                           <DatePicker fx:id="clientBirthDate" layoutX="772.0" layoutY="219.0" promptText="Birth Date" />
+                           <DatePicker fx:id="clientRegistrationDate" layoutX="772.0" layoutY="265.0" promptText="Registration Date" />
+                           <ButtonBar layoutX="588.0" layoutY="318.0" prefHeight="69.0" prefWidth="359.0" AnchorPane.bottomAnchor="131.0" AnchorPane.leftAnchor="588.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="318.0">
+                             <buttons>
+                               <Button fx:id="registerClient" mnemonicParsing="false" onAction="#clientRegisterAction" prefHeight="51.0" prefWidth="96.0" text="Register" />
+                                 <Button fx:id="editClient" layoutX="273.0" layoutY="19.0" mnemonicParsing="false" onAction="#clientEditAction" prefHeight="51.0" prefWidth="96.0" text="Edit">
+                                    <opaqueInsets>
+                                       <Insets />
+                                    </opaqueInsets>
+                                 </Button>
+                                 <Button fx:id="deleteClient" layoutX="273.0" layoutY="19.0" mnemonicParsing="false" onAction="#clientDeleteAction" prefHeight="51.0" prefWidth="96.0" text="Delete" />
+                             </buttons>
+                              <opaqueInsets>
+                                 <Insets />
+                              </opaqueInsets>
+                              <padding>
+                                 <Insets right="25.0" />
+                              </padding>
+                           </ButtonBar>
+                        </children>
+                     </AnchorPane>
+               </content>
+             </Tab>
+               <Tab fx:id="menuTab" text="Menu Management">
+                  <content>
+                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                           <ListView fx:id="menuList" layoutX="14.0" layoutY="14.0" onMouseClicked="#chooseMenuAction" prefHeight="269.0" prefWidth="553.0" />
+                           <TextField fx:id="searchMenu" layoutX="588.0" layoutY="14.0" prefHeight="25.0" prefWidth="278.0" promptText="Search for menu..." />
+                           <Button fx:id="searchMenuButton" layoutX="889.0" layoutY="14.0" mnemonicParsing="false" onAction="#menuSearchAction" prefHeight="25.0" prefWidth="54.0" text="Search" />
+                           <TextField fx:id="menuName" layoutX="588.0" layoutY="56.0" promptText="Name" />
+                           <TextArea fx:id="menuDescription" layoutX="588.0" layoutY="89.0" prefHeight="79.0" prefWidth="248.0" promptText="Description" />
+                           <TextField fx:id="menuType" layoutX="588.0" layoutY="178.0" promptText="Type" />
+                           <CheckBox fx:id="activeMenu" layoutX="846.0" layoutY="182.0" mnemonicParsing="false" text="Active" />
+                           <DatePicker fx:id="menuStartDate" layoutX="588.0" layoutY="219.0" promptText="Start date" />
+                           <DatePicker fx:id="menuEndDate" layoutX="780.0" layoutY="219.0" promptText="End date" />
+                           <ListView fx:id="dishList" layoutX="14.0" layoutY="307.0" onMouseClicked="#chooseDishAction" prefHeight="197.0" prefWidth="553.0" />
+                           <Label layoutX="14.0" layoutY="290.0" text="Dishes:" />
+                           <Button fx:id="dishAddButton" layoutX="588.0" layoutY="473.0" mnemonicParsing="false" onAction="#addDishAction" prefHeight="25.0" prefWidth="69.0" text="Add dish" />
+                           <Button fx:id="addMenuButton" layoutX="588.0" layoutY="258.0" mnemonicParsing="false" onAction="#addMenuAction" prefHeight="25.0" prefWidth="80.0" text="Add Menu" />
+                           <Button fx:id="editMenuButton" layoutX="720.0" layoutY="258.0" mnemonicParsing="false" onAction="#editMenuAction" prefHeight="25.0" prefWidth="84.0" text="Edit Menu" />
+                           <Button fx:id="deleteMenuButton" layoutX="846.0" layoutY="258.0" mnemonicParsing="false" onAction="#deleteMenuAction" prefHeight="25.0" prefWidth="90.0" text="Delete Menu" />
+                           <TextField fx:id="dishName" layoutX="588.0" layoutY="307.0" promptText="Name" />
+                           <TextField fx:id="dishIngridients" layoutX="588.0" layoutY="345.0" promptText="Ingridients" />
+                           <TextField fx:id="dishDescription" layoutX="588.0" layoutY="381.0" promptText="Description" />
+                           <TextField fx:id="dishAlergens" layoutX="588.0" layoutY="420.0" promptText="Alergens" />
+                           <TextField fx:id="dishPrice" layoutX="751.0" layoutY="345.0" promptText="Price" />
+                           <TextField fx:id="dishType" layoutX="751.0" layoutY="381.0" promptText="Type" />
+                           <TextField fx:id="dishCategory" layoutX="751.0" layoutY="420.0" promptText="Category" />
+                           <Button fx:id="dishDeleteButton" layoutX="820.0" layoutY="473.0" mnemonicParsing="false" onAction="#deleteDishAction" prefHeight="25.0" prefWidth="80.0" text="Delete dish" />
+                           <Button fx:id="dishEditButton" layoutX="703.0" layoutY="473.0" mnemonicParsing="false" onAction="#editDishAction" prefHeight="25.0" prefWidth="69.0" text="Edit dish" />
+                        </children>
+                     </AnchorPane>
+                  </content>
+               </Tab>
+               <Tab fx:id="staffTab" text="Staff Management">
+                  <content>
+                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                           <ListView fx:id="staffList" layoutX="14.0" layoutY="14.0" onMouseClicked="#staffListChooseAction" prefHeight="487.0" prefWidth="556.0" />
+                           <TextField fx:id="searchStaff" layoutX="588.0" layoutY="14.0" prefHeight="25.0" prefWidth="367.0" promptText="Search for staff..." />
+                           <Button fx:id="searchStaffButton" layoutX="900.0" layoutY="49.0" mnemonicParsing="false" onAction="#staffSearchAction" prefHeight="25.0" prefWidth="54.0" text="Search" />
+                           <Button fx:id="addStaffButton" layoutX="600.0" layoutY="413.0" mnemonicParsing="false" onAction="#staffAddAction" prefHeight="51.0" prefWidth="96.0" text="Register" />
+                           <Button fx:id="editStaffButton" layoutX="726.0" layoutY="413.0" mnemonicParsing="false" onAction="#staffEditAction" prefHeight="51.0" prefWidth="96.0" text="Edit">
+                              <opaqueInsets>
+                                 <Insets />
+                              </opaqueInsets>
+                           </Button>
+                           <TextField fx:id="staffName" layoutX="598.0" layoutY="100.0" promptText="Name" />
+                           <TextField fx:id="staffSurname" layoutX="598.0" layoutY="142.0" promptText="Surname" />
+                           <TextField fx:id="staffPassword" layoutX="598.0" layoutY="185.0" promptText="Password" />
+                           <TextField fx:id="staffPhoneNumber" layoutX="598.0" layoutY="229.0" promptText="Phone number" />
+                           <TextField fx:id="staffPosition" layoutX="598.0" layoutY="275.0" promptText="Position" />
+                           <DatePicker fx:id="staffBirthDate" layoutX="598.0" layoutY="361.0" promptText="Birth Date" />
+                           <Button fx:id="deleteStaffButton" layoutX="848.0" layoutY="413.0" mnemonicParsing="false" onAction="#staffDeleteAction" prefHeight="51.0" prefWidth="96.0" text="Delete" />
+                           <TextField fx:id="staffSalary" layoutX="598.0" layoutY="317.0" promptText="Salary" />
+                        </children>
+                     </AnchorPane>
+                  </content>
+               </Tab>
+           </tabs>
+         </TabPane>
+         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="329.0" prefHeight="62.0" prefWidth="356.0" text="Management Window" textAlignment="CENTER">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+         <Button layoutX="923.0" layoutY="19.0" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
+         <Label fx:id="welcomeLabel" layoutX="829.0" layoutY="23.0" text="Label" />
+      </children></AnchorPane>
+</Scene>

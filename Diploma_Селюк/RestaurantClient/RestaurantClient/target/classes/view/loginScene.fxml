@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Scene xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
+   <root>
+      <AnchorPane prefHeight="407.0" prefWidth="697.0">
+         <children>
+            <VBox layoutX="249.0" layoutY="104.0" prefHeight="200.0" prefWidth="199.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="199.0" text="Login(phone number):" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="loginField" />
+                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="199.0" text="Password:" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="passwordField" />
+                  <Button mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="46.0" prefWidth="199.0" text="Log in">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </root>
+</Scene>
